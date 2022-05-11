@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 export default function Form() {
-
   const [inputValue, setInputValue] = useState();
+
   const handleChange = e => {
     setInputValue(e.target.value);
   }
@@ -12,7 +12,6 @@ export default function Form() {
   }
 
   return (
-
     <div className="container">
       <div className="field is-horizontal">
         <div className="field-body">
