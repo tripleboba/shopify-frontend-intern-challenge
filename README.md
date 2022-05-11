@@ -1,3 +1,8 @@
+## Frontend Intern Shopify Challenge - Fall 2022
+Stack: React
+Styling: Bulma framework
+Handle data using:
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
