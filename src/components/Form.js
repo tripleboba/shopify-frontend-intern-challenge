@@ -20,8 +20,7 @@ export default function Form() {
             <label className="label">Enter prompt:</label>
             <div className="control">
               <textarea className="textarea" placeholder="Write something here..."
-                value={inputValue} onChange={handleChange}
-              ></textarea>
+                value={inputValue} onChange={handleChange}></textarea>
             </div>
           </div>
         </div>
@@ -32,8 +31,7 @@ export default function Form() {
           <div className="field">
             <div className="control">
               <button className="button is-dark is-outlined"
-                onClick={submitToAPI}
-              >Submit!</button>
+                onClick={submitToAPI}> Submit </button>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import ResponseItem from './ResponseItem';
 export default function ResponsesList(props) {
   const {responsesList} = props;
 
-  const listOfResponses =responsesList.map((response) => (
+  const listOfResponses = responsesList.map((response) => (
     <ResponseItem
       key={response.id}
       {...response}
