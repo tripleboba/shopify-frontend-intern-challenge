@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import { Configuration, OpenAIApi } from "openai";
+const OPENAI_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
 export default function Form() {
-  const OPENAI_KEY = process.env.REACT_APP_OPENAI_API_KEY;
   const [inputValue, setInputValue] = useState();
   const [responseValue, setResponseValue] = useState();
 
+  // textarea input value handler
   const handleChange = e => {
     setInputValue(e.target.value);
   }
-  // send prompt to openAI
-  const submitToAPI = (e) => {
+
+  // form submit button handler
+  async function submitToAPI(e){
     e.preventDefault();
     const requestData = {
       prompt: `${inputValue}`,
@@ -20,28 +22,32 @@ export default function Form() {
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
     }
-    // ---- API -----
-    const configuration = new Configuration({apiKey: OPENAI_KEY });
-    const openai = new OpenAIApi(configuration);
-    openai.createCompletion("text-curie-001", {
-      ...requestData
-    })
-    .then(res => {
-      setResponseValue(res.data.choices[0].text)
-    })
+    const response = await fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${OPENAI_KEY}`,
+      },
+      body: JSON.stringify(requestData),
+    });
+    const responseData = await response.json();
+    setResponseValue(responseData.choices[0].text);
     // ----------------------
 
   }
 
   return (
-    <div className="container">
+    <div className="section">
       <div className="field is-horizontal">
         <div className="field-body">
           <div className="field">
             <label className="label">Enter prompt:</label>
             <div className="control">
-              <textarea className="textarea" placeholder="Write something here..."
-                value={inputValue} onChange={handleChange}></textarea>
+              <textarea className="textarea"
+                placeholder="Write something here..."
+                value={inputValue}
+                onChange={handleChange}
+              ></textarea>
             </div>
           </div>
         </div>
@@ -52,7 +58,8 @@ export default function Form() {
           <div className="field">
             <div className="control">
               <button className="button is-dark is-outlined"
-                onClick={submitToAPI}> Submit </button>
+                onClick={submitToAPI}
+              > Submit </button>
             </div>
           </div>
         </div>
@@ -61,7 +68,7 @@ export default function Form() {
         {inputValue}
       </p>
       <p>
-        api: {responseValue}
+        <strong>api: </strong>{responseValue}
       </p>
     </div>
 
