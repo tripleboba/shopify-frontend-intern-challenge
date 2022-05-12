@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
-import { Configuration, OpenAIApi } from "openai";
 const OPENAI_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
 export default function Form() {
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState("");
   const [responseValue, setResponseValue] = useState();
-
-  // textarea input value handler
+  
+  // textarea; input value handler
   const handleChange = e => {
     setInputValue(e.target.value);
   }
-
   // form submit button handler
-  async function submitToAPI(e){
+  async function submitToAPI(e) {
     e.preventDefault();
     const requestData = {
       prompt: `${inputValue}`,
@@ -29,11 +27,14 @@ export default function Form() {
         Authorization: `Bearer ${OPENAI_KEY}`,
       },
       body: JSON.stringify(requestData),
-    });
+    })
     const responseData = await response.json();
+    console.log(responseData);
     setResponseValue(responseData.choices[0].text);
-    // ----------------------
+    // setInputValue(""); // for auto clear inputValue when submitted
+  }
 
+  const addToResultList = (responseData) => {
   }
 
   return (
@@ -46,8 +47,8 @@ export default function Form() {
               <textarea className="textarea"
                 placeholder="Write something here..."
                 value={inputValue}
-                onChange={handleChange}
-              ></textarea>
+                onChange={handleChange}>
+              </textarea>
             </div>
           </div>
         </div>
@@ -59,17 +60,20 @@ export default function Form() {
             <div className="control">
               <button className="button is-dark is-outlined"
                 onClick={submitToAPI}
-              > Submit </button>
+              >Submit</button>
+              {/* <button className="button is-loading">Loading</button> */}
             </div>
           </div>
         </div>
       </div>
+
       <p>
-        {inputValue}
+        prompt: {inputValue}
       </p>
       <p>
         <strong>api: </strong>{responseValue}
       </p>
+
     </div>
 
   )
