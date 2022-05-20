@@ -5,7 +5,9 @@ export default function Form() {
   const [inputValue, setInputValue] = useState("");
   const [responseValue, setResponseValue] = useState();
   const [isLoading, setLoading] = useState(false);
-
+  const loadingButtonHandler = (isLoading) => {
+    return isLoading ? "button is-loading" : "button is-dark is-outlined"
+  }
   const resultsList = [
     {
       id: '123',
@@ -87,9 +89,8 @@ export default function Form() {
         <div className="field-body">
           <div className="field">
             <div className="control">
-              <button className={isLoading ? "button is-loading" : "button is-dark is-outlined"}
-                onClick={submitToAPI}
-              >Submit</button>
+              <button className={loadingButtonHandler(isLoading)}
+                onClick={submitToAPI}>Submit</button>
             </div>
           </div>
         </div>
