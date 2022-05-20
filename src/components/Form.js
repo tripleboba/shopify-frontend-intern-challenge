@@ -5,9 +5,15 @@ export default function Form() {
   const [inputValue, setInputValue] = useState("");
   const [responseValue, setResponseValue] = useState();
   const [isLoading, setLoading] = useState(false);
-  const loadingButtonHandler = (isLoading) => {
+
+  const loadingButtonHandler = isLoading => {
     return isLoading ? "button is-loading" : "button is-dark is-outlined"
   }
+  // textarea-input-value handler
+  const handleChange = e => {
+    setInputValue(e.target.value);
+  }
+
   const resultsList = [
     {
       id: '123',
@@ -16,10 +22,7 @@ export default function Form() {
       response: 'cba'
     }
   ];
-  // textarea-input-value handler
-  const handleChange = e => {
-    setInputValue(e.target.value);
-  }
+
 
   // form-submit-button handler
   async function submitToAPI(e) {
@@ -49,11 +52,15 @@ export default function Form() {
       const responseData = await response.json().then(setLoading(false));
       console.log(responseData);
       setResponseValue(responseData.choices[0].text);
-      // setInputValue(""); // for auto clear inputValue when submitted
+      
       addToResultList(responseData);
     } catch (err) {
       console.log(err);
     }
+  }
+  const clearTextarea = e => {
+    e.preventDefault();
+    setInputValue("");
   }
 
   const addToResultList = (responseData) => {
@@ -65,7 +72,7 @@ export default function Form() {
         response: responseValue
       }
     );
-    console.log("resutlsLits>>>"+resultsList)
+    console.log("resutlsLits>>>" + resultsList)
   }
 
   return (
@@ -91,6 +98,9 @@ export default function Form() {
             <div className="control">
               <button className={loadingButtonHandler(isLoading)}
                 onClick={submitToAPI}>Submit</button>
+              <button className="button is-danger is-outlined"
+                onClick={clearTextarea}>Clear</button>
+              
             </div>
           </div>
         </div>
