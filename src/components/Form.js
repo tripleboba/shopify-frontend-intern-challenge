@@ -1,30 +1,24 @@
 import React, { useState } from 'react'
+import ResponsesList from "../components/ResponsesList";
 const OPENAI_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
 export default function Form() {
   const [inputValue, setInputValue] = useState("");
-  const [responseValue, setResponseValue] = useState();
   const [isLoading, setLoading] = useState(false);
+  const [responsesList, setResponsesList] = useState([]);
 
-  const loadingButtonHandler = isLoading => {
-    return isLoading ? "button is-loading" : "button is-dark is-outlined"
-  }
   // textarea-input-value handler
   const handleChange = e => {
     setInputValue(e.target.value);
   }
+  const loadingButtonHandler = isLoading => {
+    return isLoading ? "button is-loading" : "button is-dark is-outlined"
+  }
+  const clearTextarea = e => {
+    e.preventDefault();
+    setInputValue("");
+  }
 
-  const resultsList = [
-    {
-      id: '123',
-      created: "date",
-      prompt: 'abc',
-      response: 'cba'
-    }
-  ];
-
-
-  // form-submit-button handler
   async function submitToAPI(e) {
     e.preventDefault();
     setLoading(true);
@@ -36,44 +30,36 @@ export default function Form() {
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
     }
-    try {
-      const response = await fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${OPENAI_KEY}`,
-        },
-        body: JSON.stringify(requestData),
-      })
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
 
-      const responseData = await response.json().then(setLoading(false));
-      console.log(responseData);
-      setResponseValue(responseData.choices[0].text);
-      
-      addToResultList(responseData);
-    } catch (err) {
-      console.log(err);
+    const response = await fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${OPENAI_KEY}`,
+      },
+      body: JSON.stringify(requestData),
+    })
+    
+    const apiReturnData = await response.json()
+      .then(setLoading(false))
+    addToResponsesList(apiReturnData)
+    // console.log(apiReturnData);
+
+  }
+
+  const addToResponsesList = apiReturnData => {
+    const currentResponse = {
+      id: apiReturnData.id,
+      created: apiReturnData.created,
+      prompt: inputValue,
+      response: apiReturnData.choices[0].text
     }
-  }
-  const clearTextarea = e => {
-    e.preventDefault();
-    setInputValue("");
+    setResponsesList([{...currentResponse}, ...responsesList]);
   }
 
-  const addToResultList = (responseData) => {
-    resultsList.push(
-      {
-        id: responseData.id,
-        created: responseData.created,
-        prompt: inputValue,
-        response: responseValue
-      }
-    );
-    console.log("resutlsLits>>>" + resultsList)
-  }
+  console.log(responsesList)
+
+
 
   return (
     <div className="section">
@@ -100,20 +86,11 @@ export default function Form() {
                 onClick={submitToAPI}>Submit</button>
               <button className="button is-danger is-outlined"
                 onClick={clearTextarea}>Clear</button>
-              
             </div>
           </div>
         </div>
       </div>
-
-      <p>
-        prompt: {inputValue}
-      </p>
-      <p>
-        <strong>api: </strong>{responseValue}
-      </p>
-
+      <ResponsesList responsesList={responsesList}/>
     </div>
-
   )
 }
