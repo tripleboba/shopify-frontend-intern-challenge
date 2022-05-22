@@ -12,7 +12,7 @@ export default function Form() {
     setInputValue(e.target.value);
   }
   const loadingButtonHandler = isLoading => {
-    return isLoading ? "button is-loading is-pulled-right" : "button is-dark is-outlined is-pulled-right"
+    return isLoading ? "button is-loading is-link" : "button is-link is-outlined"
   }
   const clearTextarea = e => {
     e.preventDefault();
@@ -44,7 +44,6 @@ export default function Form() {
       .then(setLoading(false))
     addToResponsesList(apiReturnData)
     // console.log(apiReturnData);
-
   }
 
   const addToResponsesList = apiReturnData => {
@@ -59,7 +58,7 @@ export default function Form() {
 
   return (
     <Fragment>
-      <div className="section">
+      <div className="container">
         <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">
@@ -80,7 +79,7 @@ export default function Form() {
               <div className="control">
                 <button className={loadingButtonHandler(isLoading)}
                   onClick={submitToAPI}>Submit</button>
-                <button className="button is-danger is-outlined"
+                <button className="button is-danger is-outlined is-pulled-right"
                   onClick={clearTextarea}>Clear</button>
               </div>
             </div>

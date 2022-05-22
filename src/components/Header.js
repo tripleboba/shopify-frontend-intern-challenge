@@ -2,8 +2,13 @@ import React from 'react'
 
 export default function Header() {
   return (
-    <div>
-      <h3>Header - project name</h3>
-    </div>
+    <nav className="level">
+      <div className="level-item has-text-centered">
+        <div>
+          <p className="heading">OPENAI API</p>
+          <p className="title">Endpoint: completion</p>
+        </div>
+      </div>
+    </nav>
   )
 }

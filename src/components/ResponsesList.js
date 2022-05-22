@@ -12,7 +12,7 @@ export default function ResponsesList(props) {
   ));
 
   return (
-    <div className='section'>
+    <div className='container pt-6'>
       <p className='title is-4'>Responses</p>
       {responsesList.length ? listOfResponses :
         (<div className="column">

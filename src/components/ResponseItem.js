@@ -1,8 +1,8 @@
 import React from 'react'
 
 export default function ResponseItem(props) {
-  
-  const { response, prompt } = props;
+  // response{id, created, prompt, response}
+  const {prompt, response } = props;
 
   return (
     <div className="card mb-3 has-background-grey-lighter">
