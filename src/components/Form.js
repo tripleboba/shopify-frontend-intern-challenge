@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react'
 import ResponsesList from "../components/ResponsesList";
-const OPENAI_KEY = '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';
+const OPENAI_KEY = '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';
 // process.env.REACT_APP_OPENAI_API_KEY;
 
 export default function Form() {
