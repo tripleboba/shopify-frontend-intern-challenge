@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import ResponsesList from "../components/ResponsesList";
-const OPENAI_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+const OPENAI_KEY = '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';
+// process.env.REACT_APP_OPENAI_API_KEY;
 
 export default function Form() {
   const [inputValue, setInputValue] = useState("");
