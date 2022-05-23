@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Anwsers from "./components/Anwsers";
+import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -9,6 +10,7 @@ export default function App() {
         <Router>
           <Header />
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/api" element={<Form />} />
             <Route path="/answers" element={<Anwsers />} />
           </Routes>

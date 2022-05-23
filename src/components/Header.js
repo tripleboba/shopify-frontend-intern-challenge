@@ -11,10 +11,10 @@ export default function Header() {
         </Link>
       </div>
       <div className="level-item has-text-centered">
-        <div>
-          <p className="heading">Hi, I'm</p>
+        <Link to="/">
+          <p className="heading">Home</p>
           <p className="title">Ashley Tran</p>
-        </div>
+        </Link>
       </div>
       <div className="level-item has-text-centered">
         <Link to="/answers">
