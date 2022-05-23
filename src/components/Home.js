@@ -5,7 +5,6 @@ export default function Home() {
     <div className="section">
       <p className='title is-4'>Home</p>
       <div className="content">
-        <p>
           <ul>
             <li>PDF resume on Google Drive: <a href="https://bit.ly/39EsuNj">bit.ly/39EsuNj</a></li>
             <li>GitHub repo of this challenge: <a href="https://github.com/tripleboba/shopify-frontend-intern-challenge">tripleboba/shopify-frontend-intern-challenge</a></li>
@@ -13,7 +12,6 @@ export default function Home() {
               <br></br>I have added this challenge visuals on GitHub repo in case it happens
             </li>
           </ul>
-        </p>
       </div>
     </div>
   )

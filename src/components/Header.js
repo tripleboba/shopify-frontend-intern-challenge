@@ -18,8 +18,8 @@ export default function Header() {
       </div>
       <div className="level-item has-text-centered">
         <Link to="/answers">
-          <p className="heading">Answers</p>
-          <p className="heading-9">About Myself</p>
+          <p className="heading">Application's Questions</p>
+          <p className="heading-9">Answers</p>
         </Link>
       </div>
     </nav>
