@@ -12,7 +12,7 @@ export default function Form() {
     setInputValue(e.target.value);
   }
   const loadingButtonHandler = isLoading => {
-    return isLoading ? "button is-loading is-link" : "button is-link is-outlined"
+    return isLoading ? "button is-loading" : "button is-success is-outlined"
   }
   const clearTextarea = e => {
     e.preventDefault();
@@ -43,7 +43,6 @@ export default function Form() {
     const apiReturnData = await response.json()
       .then(setLoading(false))
     addToResponsesList(apiReturnData)
-    // console.log(apiReturnData);
   }
 
   const addToResponsesList = apiReturnData => {
