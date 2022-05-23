@@ -1,7 +1,10 @@
 ## Frontend Intern Shopify Challenge - Fall 2022
+[![Netlify Status](https://api.netlify.com/api/v1/badges/14672a9d-8164-4084-9715-866884b2d9f4/deploy-status)](https://app.netlify.com/sites/ashleytran-shopify-frontend-challenge-fall2022/deploys)
+
+---
 Framework: React <br>
 Styling: Bulma framework <br>
-Handle data using: State Hook, async fetch func <br>
+Handle data using: react state hook, async fetch func <br>
 Deployed at: https://ashleytran-shopify-frontend-challenge-fall2022.netlify.app/
 
 ### Local Setup
@@ -9,4 +12,5 @@ Deployed at: https://ashleytran-shopify-frontend-challenge-fall2022.netlify.app/
 2. Using your own OpenAI account: create `.env` file with this format in the file `REACT_APP_OPENAI_API_KEY='your-api-key'`
 3. Run `npm start` -> visit `http://localhost:3000/`
 
-# OpenAI keeps automatically rotate my API key, in case it changes and no longer able to make the request to the API, please fork repo to your local and use your API key
+#### Demo
+![API](display/api%20demo.gif)
