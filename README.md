@@ -2,6 +2,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/14672a9d-8164-4084-9715-866884b2d9f4/deploy-status)](https://app.netlify.com/sites/ashleytran-shopify-frontend-challenge-fall2022/deploys)
 
 ---
+Status: rejected :)
 Library: ReactJS <br>
 Styling: Bulma framework <br>
 Handle data using: react state hook, async fetch func <br>
