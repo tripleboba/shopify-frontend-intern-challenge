@@ -7,7 +7,7 @@ Library: ReactJS <br>
 Styling: Bulma framework <br>
 Handle data using: react state hook, async fetch func <br>
 Deployed at: https://ashleytran-shopify-frontend-challenge-fall2022.netlify.app/ <br>
-Note: not handling empty input submit for submit-button because using [OpenAI Text Completion API](https://beta.openai.com/docs/guides/completion/prompt-design) (the API generates random completed sentence(s) for an empty input) instead handling loading-button to prevent user clicking again while the form is being submitted to the API and is waiting for response to comeback (init submission takes longer time to response)
+Note: not handling empty input submit for submit-button because of using [OpenAI Text Completion API](https://beta.openai.com/docs/guides/completion/prompt-design) (the API generates random completed sentence(s) for an empty input) instead handling loading-button to prevent user clicking again while the form is being submitted to the API and is waiting for response to comeback (init submission takes longer time to response)
 
 ### Local Setup
 1. Install dependencies with `npm i`.
